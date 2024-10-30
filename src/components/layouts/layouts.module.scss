@@ -1,0 +1,20 @@
+@import '../../../theme.scss';
+
+.AuthBanner_img {
+
+    >img {
+
+        width     : 100%;
+        min-height: 90vh;
+        object-fit: cover;
+    }
+}
+
+
+.form_wrapper {
+
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

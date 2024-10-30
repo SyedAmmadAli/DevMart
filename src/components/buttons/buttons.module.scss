@@ -1,0 +1,12 @@
+@import '../../../theme.scss';
+
+.button_container{
+    width: 100%;
+    outline: none;
+    border: none;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: $primaryColor;
+    padding: 8px;
+    color: $accentgrey;
+}

@@ -1,0 +1,18 @@
+@import '../../../theme.scss';
+
+
+.app_navbar_container {
+    background-color: $pageBackground !important;
+    box-shadow      : 0px 1px 10px -1px rgba(168, 168, 168, 1);
+
+    .nav_link_item {
+        font-weight: 500;
+        padding    : 2px;
+
+        &:hover {
+            // background-color: red;
+            border-bottom: 1px solid black;
+        }
+
+    }
+}

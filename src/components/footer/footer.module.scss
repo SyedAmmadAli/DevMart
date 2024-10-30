@@ -1,0 +1,9 @@
+@import '../../../theme.scss';
+
+
+.footer_container {
+    background-color: $dark;
+    color           : $darkGrey;
+    padding         : 10px;
+    text-align      : center;
+}

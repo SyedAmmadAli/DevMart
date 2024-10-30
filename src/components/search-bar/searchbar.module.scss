@@ -1,0 +1,16 @@
+@import '../../../theme.scss';
+
+.global_search_container {
+    // border: 1px solid black;
+    width        : 243px;
+    padding      : 2px 10px;
+    border-radius: 5px;
+
+    >input {
+        background-color: $accentgrey !important;
+        font-size       : 13px;
+        background-color: transparent !important;
+        border          : none !important;
+        outline         : none;
+    }
+}
