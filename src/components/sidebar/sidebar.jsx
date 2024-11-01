@@ -5,8 +5,19 @@ import { RxCross1 } from "react-icons/rx";
 import { NavLink } from 'react-router-dom';
 import { GlobalSearch } from '../search-bar/global-search-bar';
 import { ShoppingCart } from '../shopping_cart/shopping-cart';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeUser } from '../../redux/feature/user-slice';
+
 
 export const Sidebar = () => {
+
+
+  const isLogin = useSelector(state => state.user.isLogin);
+  const dispatch = useDispatch();
+
+  const signOut = () =>{
+      dispatch(removeUser());
+  } 
 
   const { is_Sidebar, sidebarOpen, sidebarClose } = useContext(SidebarContext);
 
@@ -34,9 +45,15 @@ export const Sidebar = () => {
             <li>
               <NavLink to='/about' className={`${styles.nav_link_item} nav-link active`}>About</NavLink>
             </li>
+            {isLogin ?
+            <li>
+              <NavLink onClick={signOut()} className={`${styles.nav_link_item} nav-link active`}>Sign Out</NavLink>
+            </li>:
             <li>
               <NavLink to='/auth/signup' className={`${styles.nav_link_item} nav-link active`}>Sign Up</NavLink>
             </li>
+            
+            }
           </ul>
         </div>
       </div>

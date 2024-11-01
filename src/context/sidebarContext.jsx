@@ -19,10 +19,10 @@ export default function SidebarProvider({ children }) {
 
 
     
-    useEffect(()=>{
-        console.log(isSidebar_Open);
-        
-    },[isSidebar_Open])
+        // useEffect(()=>{
+        //     console.log(isSidebar_Open);
+            
+        // },[isSidebar_Open])
 
     
     return <SidebarContext.Provider value={{
