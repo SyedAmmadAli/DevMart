@@ -1,22 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    data :{},
-    isLogin: false
+  data: {},
+  isLogin: false
 }
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    addUser: (state,action) => {
-        state.data = action.payload
-        state.isLogin = true
+    addUser: (state, action) => {
+      console.log("Action payload in reducer:", action.payload);
+      state.data = action.payload
+      state.isLogin = true
     },
-   
+
     removeUser: (state) => {
       state.data = {}
-      state.isLogin = false 
+      state.isLogin = false
     },
   },
 })

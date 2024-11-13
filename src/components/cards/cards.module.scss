@@ -1,0 +1,92 @@
+@import '../../../theme.scss';
+
+.CategoryCard_container {
+    border         : 1px solid $borderGrey;
+    width          : 180px;
+    height         : 140px;
+    display        : flex;
+    border-radius  : 5px;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+
+    p {
+        padding    : 0;
+        margin     : 0;
+        padding-top: 10px;
+        font-weight: 500;
+    }
+}
+
+
+.product_card_container {
+    // border: 1px solid red;
+    width: 280px;
+
+    .card_img_container {
+        height          : 250px;
+        background-color: $lightGrey2;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+
+        img {
+            width     : 80%;
+            object-fit: cover;
+            height    : 80%;
+        }
+    }
+
+    .card_content {
+        display        : flex;
+        justify-content: space-between;
+        margin-top     : 10px;
+
+        .card_details {
+
+            h6 {
+                font-weight: 600;
+            }
+
+            p {
+                color      : $primaryColor;
+                font-weight: 600;
+                padding    : 0;
+                margin     : 0;
+            }
+        }
+    }
+}
+
+.cartIcon {
+    width        : 45px;
+    height       : 45px;
+    border       : 1px solid black;
+    border-radius: 50%;
+    text-align   : center;
+    line-height  : 40px;
+
+    &:hover {
+        background-color: $primaryColor;
+        border          : none;
+        color           : white;
+    }
+}
+
+.servicesCardContainer {
+
+    width: 280px;
+
+    img {
+        width: 80px;
+    }
+
+    h6 {
+        font-size  : 20px;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

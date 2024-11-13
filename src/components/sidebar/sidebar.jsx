@@ -47,7 +47,7 @@ export const Sidebar = () => {
             </li>
             {isLogin ?
             <li>
-              <NavLink onClick={signOut()} className={`${styles.nav_link_item} nav-link active`}>Sign Out</NavLink>
+              <NavLink onClick={signOut} className={`${styles.nav_link_item} nav-link active`}>Sign Out</NavLink>
             </li>:
             <li>
               <NavLink to='/auth/signup' className={`${styles.nav_link_item} nav-link active`}>Sign Up</NavLink>

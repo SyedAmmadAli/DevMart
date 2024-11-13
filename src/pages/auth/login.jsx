@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { PrimaryButton } from '../../components/buttons/primary-button'
 import { Helpers } from '../../services/helpers'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../../redux/feature/user-slice'
 
 
@@ -18,11 +18,12 @@ export const Login = () => {
   const [loader, setLoader] = useState(false);
   const [authError, setAuthError] = useState("")
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch =  useDispatch();
+  const isLogin = useSelector(state => state.user.isLogin);
 
   const onSubmitLogin = async (e) => {
-
-
+  
+    
     e.preventDefault();
 
     let emailError, passworderror = '';
@@ -45,7 +46,10 @@ export const Login = () => {
         const payload = { email, password }
         const response = await axios.post("https://dev-mart-server.vercel.app/api/user/login", payload)
         console.log(response?.data?.data, ">>> login Response");
-        dispatch(addUser(response?.data?.data))
+        console.log(isLogin);
+        dispatch(addUser(response.data.data))
+
+
         setError({ email: "", password: "" });
         navigate("/")
         setLoader(false);
