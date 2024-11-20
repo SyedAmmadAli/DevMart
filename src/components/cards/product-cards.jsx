@@ -12,7 +12,7 @@ export const ProductCards = ({data}) => {
     const navigate = useNavigate();
 
     return (
-        <div className={styles.product_card_container}>
+        <div className={styles.product_card_container} onClick={()=>navigate('/product-info')}>
             <div className={styles.card_img_container}>
                 <img src={data?.images ? data.images[0] : p1} alt="" />
             </div>

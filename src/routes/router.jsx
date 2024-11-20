@@ -3,6 +3,7 @@ import { Home } from "../pages/Home/home";
 import { Signup } from "../pages/auth/signup";
 import { Login } from "../pages/auth/login";
 import { Products } from "../pages/products/products";
+import { ProductInfoPage } from "../pages/product-info/product-info-page";
 
 
 export const publicRoutes = createBrowserRouter([
@@ -22,6 +23,10 @@ export const publicRoutes = createBrowserRouter([
     {
         path: '/products',
         element: <Products/>
+    },
+    {
+        path: '/product-info',
+        element: <ProductInfoPage/>
     }
     
 ])

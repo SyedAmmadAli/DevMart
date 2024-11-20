@@ -77,8 +77,6 @@ export default function CategoryCarousel() {
             <SwiperSlide key={key} className='d-flex justify-content-center'> <CategoryCard icon={item.icon} title={item.title} /> </SwiperSlide>
           ))
         }
-
-
       </Swiper>
     </>
   );
