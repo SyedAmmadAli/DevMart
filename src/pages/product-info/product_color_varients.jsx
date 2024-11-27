@@ -10,7 +10,7 @@ export const ProductColorVarients = ({ colorList, onChangeColor, activeColor }) 
     return (
         <>
 
-            {colorList.map((colors, i) => <div 
+            {colorList.map((colors, i) => <div key={i}
             onClick={()=> handleColorChange(colors)}
             className={styles.color_box} 
             style={{ backgroundColor: colors ,border: `3px solid ${activeColor == colors ? "#000" : colors}`}}>

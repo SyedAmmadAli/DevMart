@@ -6,12 +6,17 @@ import BestProductSlider from '../../components/slider/best-product-slider'
 import { singleProduct } from '../../services/single-data';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules'
+
+
 import { Rating } from 'react-simple-star-rating'
 import { ProductColorVarients } from './product_color_varients'
 import { PrimaryButton } from "../../components/buttons/primary-button"
 import { ProductQuantityCounter } from '../../components/shopping_cart/product-quantity-counter'
+import delivery_icon from "../../assets/imgs/icon-delivery.svg"
+import return_icon from "../../assets/imgs/icon-return.svg"
+import { ProductShippingCard } from './product-shipping-card'
+import { ProductImagesSlider } from '../../components/slider/product-images-slider'
+
 
 export const ProductInfoPage = () => {
 
@@ -20,45 +25,23 @@ export const ProductInfoPage = () => {
     console.log(singleProduct.images);
     return (
 
-
-
         <Page_layout>
 
 
             <section className={`container my-5 py-5`}>
                 <div className="row">
-                    <div className="col-7">
+                    <div className="col-lg-7">
                         <div className={`${styles.product_imagees_container}`}>
                             <figure>
                                 <img src={singleProduct.images[0]} alt="products Feature Imgs" />
                             </figure>
 
                             <div className={styles.product_images_slider_container}>
-                                <Swiper
-                                    slidesPerView={1}
-                                    spaceBetween={160}
-
-                                    breakpoints={{
-                                        0: { slidesPerView: 2, spaceBetween: 20 },
-                                        768: { slidesPerView: 3, spaceBetween: 20 },
-                                        992: { slidesPerView: 5, spaceBetween: 30 },
-                                        1200: { slidesPerView: 6, spaceBetween: 30 },
-                                    }}
-                                    modules={[Pagination]}
-                                    className="mySwiper"
-                                >
-                                    {
-                                        singleProduct.images.map((src, key) => (
-                                            <SwiperSlide key={key} className='d-flex justify-content-center'>
-                                                <img className={styles.product_other_images} src={src} alt="other pics of product" />
-                                            </SwiperSlide>
-                                        ))
-                                    }
-                                </Swiper>
+                               <ProductImagesSlider images={singleProduct.images}></ProductImagesSlider>
                             </div>
                         </div>
                     </div>
-                    <div className="col-5">
+                    <div className="col-lg-5 mt-lg-0 mt-5">
                         <div className={styles.product_content_container}>
                             <h1 className={styles.product_title}>{singleProduct.name}</h1>
                             <div className='d-flex gap-2 align-items-center'>
@@ -79,6 +62,11 @@ export const ProductInfoPage = () => {
                             <div className={`${styles.product_buy_container}  d-flex gap-2 align-items-center my-5`}>
                                 <div><ProductQuantityCounter></ProductQuantityCounter> </div>
                                 <div><PrimaryButton onClick={() => null}>Buy Now</PrimaryButton></div>
+                            </div>
+
+                            <div className={`${styles.product_shipping_container}  d-flex flex-column my-5`}>
+                                <ProductShippingCard icon={delivery_icon} title="Free Delivery" desc="Enter your postal code for Delivery Availability"></ProductShippingCard>
+                                <ProductShippingCard icon={return_icon} title="Return Delivery" desc="Free 30 Days Delivery Returns."></ProductShippingCard>
                             </div>
 
                         </div>

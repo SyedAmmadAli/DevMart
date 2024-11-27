@@ -7,7 +7,7 @@ export const ProductQuantityCounter = () => {
     return (
         <div className={`${styles.product_quantity_counter} d-flex justify-content-between align-items-center`}>
             <span className={styles.update_counter_button}><AiOutlineMinus size={27}/></span>
-            <span></span>
+            <span className={styles.counter_value}>3</span>
             <span className={styles.update_counter_button}><IoAddOutline size={27}/></span>
         </div>
     )
