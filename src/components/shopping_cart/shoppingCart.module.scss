@@ -3,6 +3,7 @@
 .shoppingCart_Icon {
     width  : 25px;
     padding: 3px 10px;
+    cursor : pointer;
 }
 
 .product_quantity_counter {
@@ -46,4 +47,19 @@
         }
 
     }
+}
+
+.product_quantity_counter_small {
+
+    width : 100px;
+    height: 30px;
+
+    .counter_value {
+        font-size: 16px;
+    }
+
+    .update_counter_button {
+        width: 30px;
+    }
+
 }
