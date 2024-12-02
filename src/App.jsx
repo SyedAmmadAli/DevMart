@@ -1,15 +1,18 @@
 import React from "react"
 import '../index.scss'
 import { RouterProvider } from "react-router-dom"
-import { publicRoutes } from "./routes/router"
+import { privateRoutes, publicRoutes } from "./routes/router"
+import { useSelector } from "react-redux"
 
 
 function App() {
+
   
+  const isLogin = useSelector(state => state.user.isLogin) 
 
   return (
     <>
-    <RouterProvider router={publicRoutes}></RouterProvider>
+    <RouterProvider router={isLogin? privateRoutes : publicRoutes }></RouterProvider>
 
     </>
   )

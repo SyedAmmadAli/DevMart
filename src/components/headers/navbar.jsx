@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styles from "./navbar.module.scss";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Sidebar } from '../sidebar/sidebar';
 import { SidebarContext } from '../../context/sidebarContext';
 import { GlobalSearch } from "../search-bar/global-search-bar";
@@ -18,6 +18,7 @@ export const Navbar = () => {
     const dispatch = useDispatch()
     const avatar = useSelector(state => state.user.data.avatar);
     const username = useSelector(state => state.user.data.name);
+    const navigate = useNavigate();
 
     // console.log(isLogin);
 
@@ -25,6 +26,7 @@ export const Navbar = () => {
 
     const signOut = () => {
         dispatch(removeUser());
+        navigate("/");
     }
 
 

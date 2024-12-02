@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styles from './sidebar.module.scss'
 import { SidebarContext } from '../../context/sidebarContext'
 import { RxCross1 } from "react-icons/rx";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { GlobalSearch } from '../search-bar/global-search-bar';
 import { ShoppingCart } from '../shopping_cart/shopping-cart';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,9 +14,11 @@ export const Sidebar = () => {
 
   const isLogin = useSelector(state => state.user.isLogin);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signOut = () =>{
       dispatch(removeUser());
+      navigate("/");
   } 
 
   const { is_Sidebar, sidebarOpen, sidebarClose } = useContext(SidebarContext);
