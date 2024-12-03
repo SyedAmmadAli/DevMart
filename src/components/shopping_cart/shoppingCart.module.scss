@@ -1,9 +1,26 @@
 @import '../../../theme.scss';
 
 .shoppingCart_Icon {
-    width  : 25px;
-    padding: 3px 10px;
-    cursor : pointer;
+    width   : 25px;
+    padding : 3px 10px;
+    cursor  : pointer;
+    position: relative;
+    z-index : 2;
+
+    .cart_products_quantity {
+        position        : absolute;
+        left            : 16px;
+        top             : -7px;
+        height          : 22px;
+        width           : 22px;
+        border-radius   : 50%;
+        text-align      : center;
+        line-height     : 22px;
+        background-color: $primaryColor;
+        font-size       : 11px;
+        color           : $white;
+        z-index         : -1;
+    }
 }
 
 .product_quantity_counter {

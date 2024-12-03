@@ -20,9 +20,7 @@ export const Navbar = () => {
     const username = useSelector(state => state.user.data.name);
     const navigate = useNavigate();
 
-    // console.log(isLogin);
 
-    // console.log(is_Sidebar,sidebarOpen);
 
     const signOut = () => {
         dispatch(removeUser());

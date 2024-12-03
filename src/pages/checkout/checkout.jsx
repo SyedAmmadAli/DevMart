@@ -3,8 +3,13 @@ import { Page_layout } from '../../components/layouts/page-layout'
 import styles from "./checkout.module.scss"
 import { CartProduct } from './cart-products'
 import { CheckoutSummary } from './checkout-summary'
+import useShoppingCart from '../../hooks/use-shopping-cart'
 
 export const Checkout = () => {
+
+    const { addToCart, decreaseProductQuantityInCart, removeFromCart, getCartCount, getCartProducts, getCartProductsQuantity, getCartSingleProduct, clearCart } = useShoppingCart();
+
+    const cart_Products = getCartProducts();
     return (
         <Page_layout>
             <div className={`container my-5 py-5`}>
@@ -18,8 +23,11 @@ export const Checkout = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <CartProduct></CartProduct>
-                        <CartProduct></CartProduct>
+                        {
+                            cart_Products && cart_Products.length > 0 &&
+                            cart_Products.map(item => <CartProduct key={item.product_id} data={item}></CartProduct> )
+                        }
+                       
                     </tbody>
                 </table>
 

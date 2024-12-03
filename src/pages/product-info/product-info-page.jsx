@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './product-info-page.module.scss'
 import { Page_layout } from '../../components/layouts/page-layout'
 import { SectionHeading } from '../../components/section-headings/section-heading'
@@ -6,8 +6,6 @@ import BestProductSlider from '../../components/slider/best-product-slider'
 import { singleProduct } from '../../services/single-data';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
-
-
 import { Rating } from 'react-simple-star-rating'
 import { ProductColorVarients } from './product_color_varients'
 import { PrimaryButton } from "../../components/buttons/primary-button"
@@ -16,13 +14,28 @@ import delivery_icon from "../../assets/imgs/icon-delivery.svg"
 import return_icon from "../../assets/imgs/icon-return.svg"
 import { ProductShippingCard } from './product-shipping-card'
 import { ProductImagesSlider } from '../../components/slider/product-images-slider'
+import useShoppingCart from '../../hooks/use-shopping-cart'
+import { useSelector } from 'react-redux'
+import { Helpers } from '../../services/helpers'
+
 
 
 export const ProductInfoPage = () => {
 
-    const [activeColor, setActiveColor] = useState(singleProduct.colors?.[0] ?? null);
 
-    console.log(singleProduct.images);
+    const [activeColor, setActiveColor] = useState(singleProduct.colors?.[0] ?? null);
+    const [quantity, setQuantity] = useState(0)
+    const { addToCart, decreaseProductQuantityInCart, removeFromCart, getCartCount, getCartProducts, getCartProductsQuantity, getCartSingleProduct, clearCart } = useShoppingCart();
+    const product = useSelector(state=> state.cart.product)
+    console.log(product);
+    
+
+    useEffect(() => {
+        const q = getCartProductsQuantity(singleProduct.id);
+        setQuantity(q);
+    }, [getCartProductsQuantity, addToCart, decreaseProductQuantityInCart]);
+    console.log(quantity)
+
     return (
 
         <Page_layout>
@@ -37,7 +50,7 @@ export const ProductInfoPage = () => {
                             </figure>
 
                             <div className={styles.product_images_slider_container}>
-                               <ProductImagesSlider images={singleProduct.images}></ProductImagesSlider>
+                                <ProductImagesSlider images={singleProduct.images}></ProductImagesSlider>
                             </div>
                         </div>
                     </div>
@@ -49,7 +62,7 @@ export const ProductInfoPage = () => {
                                 <span className={styles.in_stock}>In Stock</span>
                             </div>
 
-                            <p className={styles.product_price}>{singleProduct.price}</p>
+                            <p className={styles.product_price}>{Helpers.priceFormatter(singleProduct.price)}</p>
                             <p className={styles.product_desc}>{singleProduct.description}</p>
 
                             <div className={`${styles.product_color_variants} d-flex gap-2 align-items-center`}>
@@ -60,8 +73,17 @@ export const ProductInfoPage = () => {
                             </div>
 
                             <div className={`${styles.product_buy_container}  d-flex gap-2 align-items-center my-5`}>
-                                <div><ProductQuantityCounter></ProductQuantityCounter> </div>
-                                <div><PrimaryButton onClick={() => null}>Buy Now</PrimaryButton></div>
+                                <div>
+                                    {quantity > 0 ?
+                                        <ProductQuantityCounter qty={quantity} onIncreament={() => addToCart(singleProduct)} onDecreament={() => decreaseProductQuantityInCart(singleProduct)}></ProductQuantityCounter> :
+                                        <PrimaryButton onClick={() => addToCart(singleProduct)
+                                        }>Add to Cart</PrimaryButton>
+                                    }
+                                </div>
+                                <div>
+                                    <PrimaryButton onClick={() => null}>Buy Now</PrimaryButton>
+                                </div>
+
                             </div>
 
                             <div className={`${styles.product_shipping_container}  d-flex flex-column my-5`}>
